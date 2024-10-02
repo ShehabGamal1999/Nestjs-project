@@ -64,4 +64,7 @@ export class UsersService {
       throw new BadRequestException('Something went wrong');
     }
   }
+  async findOneByEmail(email: string): Promise<User | null> {
+    return this.userModel.findOne({ email }).exec();
+  }
 }

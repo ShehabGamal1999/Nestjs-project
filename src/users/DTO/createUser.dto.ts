@@ -1,5 +1,5 @@
-import { IsEmail, IsString, Length } from 'class-validator';
-
+import { IsEmail, IsString, Length , IsEnum, IsOptional} from 'class-validator';
+import { UserRole } from '../Schema/users.schema';
 export class CreateUser {
   @IsString()
   @Length(2, 10, { message: 'name must be between 2 and 10 characters' })
@@ -11,4 +11,8 @@ export class CreateUser {
 
   @IsString()
   password: string;
+
+  @IsOptional()
+  @IsEnum(UserRole)
+  role?: UserRole;
 }
